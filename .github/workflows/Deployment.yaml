@@ -1,0 +1,31 @@
+name: test Project
+on: push
+jobs: 
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Code
+        uses: actions/checkout@v3
+      - name: Install NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+      - name: NPM CI
+        run: npm ci
+      - name: unit Test
+        run: npm run test    
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Code
+        uses: actions/checkout@v3
+      - name: Install NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+      - name: NPM CI
+        run: npm ci
+      - name: NPM BUILD
+        run: npm run build
+      - name: Deploying to Azure
+        run: echo "Deploying"  
