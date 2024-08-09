@@ -1,8 +1,0 @@
-name: OUTPUT
-on: issues
-jobs:
-    output:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Output event details
-              run: echo ${{ github.event }}
