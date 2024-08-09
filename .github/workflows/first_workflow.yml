@@ -1,0 +1,21 @@
+name: LINT TEST and DEPLOY
+on: push
+jobs:
+    First_Step:
+            runs-on: ubuntu-latest
+            steps: 
+                - name: Install NodeJS
+                  uses: actions/setup-node@v3
+                  with: 
+                    node-version: 18
+                - name: Checkout Code
+                  uses: actions/checkout@v3
+                - name: NPM CI
+                  run: npm ci
+                - name: LINT
+                  run: npm run lint
+                - name: TEST
+                  run: npm run test
+                - name: DEPLOY
+                  run: echo" Deploying to Azure"
+
